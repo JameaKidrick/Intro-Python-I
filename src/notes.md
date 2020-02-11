@@ -56,7 +56,7 @@ Lists
     - newArray = array[1: ]
       - omits the 0th index (1)
 
-Tuples
+Tuples 
 
 - === JS objects
 - group of key:value pairs
