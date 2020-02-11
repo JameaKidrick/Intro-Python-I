@@ -31,14 +31,37 @@ Help
 - use help to get a list of the methods you can use with a specific data type
   - for example, `help(array)` **if array = [ ]** will show a short list of array methods that you could use
 
+---
+### **COLLECTIONS**
 
 Lists
-- = JS arrays
+- === JS arrays
+- group of items referenced by index
 - order matters
 - starts at 0
+- mutable
+- allows duplicate items
+- methods:
+  - `.insert()`
+  - `.append()`
+  - `.remove()`
+  - `.pop()`
+  - `del`
+  - traverse
+    - for i in range()
+  - slice
+    - array = [1, 2, 3]
+    - newArray = array[0:2] or newArray = array[ :2]
+      - omits the 2nd index (3)
+    - newArray = array[1: ]
+      - omits the 0th index (1)
 
+Tuples
 
-
+- === JS objects
+- group of key:value pairs
+- order does not matter
+- immutable
 <!-- 
 >>> x = [1, 2, 3]
 >>> x
