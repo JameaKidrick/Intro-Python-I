@@ -34,19 +34,19 @@ from datetime import datetime
 date = sys.argv 
 today = datetime.date(datetime.today())
 def cal(year = today.year, month = today.month):
-    if len(date) == 2 and int(date[1]) > 12:
+    if len(date) == 2 and int(date[1]) <= 12 and int(date[1]) >= 1:
         month = int(date[1])
         print(month)
-        return calendar.TextCalendar().formatmonth(year, month)
+        print(calendar.TextCalendar().formatmonth(year, month))
     elif len(date) == 1:
-        return calendar.TextCalendar().formatmonth(year, month)
-    elif len(date) == 3:
+        print(calendar.TextCalendar().formatmonth(year, month))
+    elif len(date) == 3 and int(date[1]) <= 12 and int(date[1]) >= 1:
         year = int(date[2])
         month = int(date[1])
-        return calendar.TextCalendar().formatmonth(year, month)
+        print(calendar.TextCalendar().formatmonth(year, month))
     else:
-        print('Please give your input in the format: `14_cal.py [month] [year]`')
-print('CALENDAR', cal())
+        print('Please give your input in the format: `14_cal.py [month] [year]`. Make sure it is a valid month.')
+cal()
 
 
 
