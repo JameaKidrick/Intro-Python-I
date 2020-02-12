@@ -56,6 +56,10 @@ def f4(**tuple):
     return '\n'.join(f'key: {key}, value: {value}'
         for key, value in tuple.items()
     )
+# OR
+# def f4(**tuple):
+#     for key in tuple:
+#         return f'key: {key}, value: {tuple[key]}'
 
 # Should print
 # key: a, value: 12

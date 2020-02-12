@@ -1,6 +1,24 @@
 # Make a class LatLon that can be passed parameters `lat` and `lon` to the
 # constructor
 
+# Class Structure
+    # - self is essentially like the this keyword in JS
+
+# BASIC
+# class ClassName:
+#     constructor(self, anyOtherAttributes):
+#         self.anyOtherAttributes = anyOtherAttributes
+#         self.anyOtherAttributes = anyOtherAttributes
+#         self.anyOtherAttributes = anyOtherAttributes
+
+# INHERITING
+# class ChildClassName(ParentClassName):
+#     constructor(self, attributesFromParentClassName, anyOtherAttributes):
+#         super().__init__(attributesFromParentClassName)
+#         self.anyOtherAttributes = anyOtherAttributes
+# position of the inheriting attributes matter!
+
+
 class LatLon:
     def __init__(self, lat, lon):
         self.lat = lat
@@ -17,10 +35,8 @@ class Waypoint(LatLon):
     def __init__(self, name, lat, lon):
         super().__init__(lat, lon)
         self.name = name
-
-testEx2 = Waypoint('California', 37.2551, -119.61752)
-
-print(f'Latitude is {testEx2.lat:.1f}, Longitude is {testEx2.lon:.1f}, and Name is {testEx2.name}')
+    def __str__(self):
+        return f'{self.name}, {self.lat}, {self.lon}'
 
 # Make a class Geocache that can be passed parameters `name`, `difficulty`,
 # `size`, `lat`, and `lon` to the constructor. What should it inherit from?
@@ -30,23 +46,20 @@ class Geocache(Waypoint):
         super().__init__(name, lat, lon)
         self.difficulty = difficulty
         self.size = size
-
-testEx3 = Geocache('California', 'Level', 'Huge', 37.2551, -119.61752)
-
-print(f'Latitude is {testEx3.lat:.1f}, Longitude is {testEx3.lon:.1f}, Name is {testEx3.name}, its difficulty is {testEx3.difficulty}, and it is {testEx3.size}')
+    def __str__(self):
+        return f'{self.name}, diff {self.difficulty}, size {self.size}, {self.lat}, {self.lon}'
 
 # Make a new waypoint and print it out: "Catacombs", 41.70505, -121.51521
-
-newWaypoint = Waypoint("Catacombs", 41.70505, -121.51521)
-print(f'{newWaypoint.name}, {newWaypoint.lat}, {newWaypoint.lon}')
+waypoint = Waypoint("Catacombs", 41.70505, -121.51521)
+print(waypoint)
 
 # Without changing the following line, how can you make it print into something
 # more human-readable? Hint: Look up the `object.__str__` method
-# print(waypoint)
+print(waypoint)
 
 # Make a new geocache "Newberry Views", diff 1.5, size 2, 44.052137, -121.41556
-
-# YOUR CODE HERE
+geocache = Geocache("Newberry Views", 1.5, 2, 44.052137, -121.41556)
+print(geocache)
 
 # Print it--also make this print more nicely
-# print(geocache)
+print(geocache)
