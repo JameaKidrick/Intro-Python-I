@@ -58,160 +58,46 @@ Lists
 
 Tuples 
 
-- === JS objects
-- group of key:value pairs
+- use parentheses
 - order does not matter
 - immutable
-<!-- 
->>> x = [1, 2, 3]
->>> x
-[1, 2, 3]
->>> help(x.insert)
-Help on built-in function insert:
 
-insert(index, object, /) method of builtins.list instance
-    Insert object before index.
+Dictionaries
 
->>> x.insert(3, 4)
->>> x
-[1, 2, 3, 4] 
-
--->
+- === JS objects
+- contains key:value pairs
+- immutable
+- keys can be strings, numbers, or tuples that contain immutable types such as strings, numbers, or other tuples unless those tuples include a mutable object
+  - lists can not be used as keys since they can be modified using indeces, slices, or methods (append/extend)
+- keys have to be unique within one dictionary
+- use `list(dictionary)` to get a list of all the keys
+- use `sorted(dictionary)` to get a list of all the keys sorted
+- use `in` (example: word in dictionary) to check if the dictionary includes that key (returns boolean)
 
 
-<!-- >>> help(x)
-Help on list object:
+Functions
 
-class list(object)
- |  list(iterable=(), /)
- |
- |  Built-in mutable sequence.
- |
- |  If no argument is given, the constructor creates a new empty list.
- |  The argument must be an iterable if specified.
- |
- |  Methods defined here:
- |
- |  __add__(self, value, /)
- |      Return self+value.
- |
- |  __contains__(self, key, /)
- |      Return key in self.
- |
- |  __delitem__(self, key, /)
- |      Delete self[key].
- |
- |  __eq__(self, value, /)
- |      Return self==value.
- |
- |  __ge__(self, value, /)
- |      Return self>=value.
- |
- |  __getattribute__(self, name, /)
- |      Return getattr(self, name).
- |
- |  __getitem__(...)
- |      x.__getitem__(y) <==> x[y]
- |
- |  __gt__(self, value, /)
- |      Return self>value.
- |
- |  __iadd__(self, value, /)
- |      Implement self+=value.
- |
- |  __imul__(self, value, /)
- |      Implement self*=value.
- |
- |  __init__(self, /, *args, **kwargs)
- |      Initialize self.  See help(type(self)) for accurate signature.
- |
- |  __iter__(self, /)
- |      Implement iter(self).
- |
- |  __le__(self, value, /)
- |      Return self<=value.
- |
- |  __len__(self, /)
- |      Return len(self).
- |
- |  __lt__(self, value, /)
- |      Return self<value.
- |
- |  __mul__(self, value, /)
- |      Return self*value.
- |
- |  __ne__(self, value, /)
- |      Return self!=value.
- |
- |  __repr__(self, /)
- |      Return repr(self).
- |
- |  __reversed__(self, /)
- |      Return a reverse iterator over the list.
- |
- |  __rmul__(self, value, /)
- |      Return value*self.
- |
- |  __setitem__(self, key, value, /)
- |      Set self[key] to value.
- |
- |  __sizeof__(self, /)
- |      Return the size of the list in memory, in bytes.
- |
- |  append(self, object, /)
- |      Append object to the end of the list.
- |
- |  clear(self, /)
- |      Remove all items from list.
- |
- |  copy(self, /)
- |      Return a shallow copy of the list.
- |
- |  count(self, value, /)
- |      Return number of occurrences of value.
- |
- |  extend(self, iterable, /)
- |      Extend list by appending elements from the iterable.
- |
- |  index(self, value, start=0, stop=9223372036854775807, /)
- |      Return first index of value.
- |
- |      Raises ValueError if the value is not present.
- |
- |  insert(self, index, object, /)
- |      Insert object before index.
- |
- |  pop(self, index=-1, /)
- |      Remove and return item at index (default last).
- |
- |      Raises IndexError if list is empty or index is out of range.
- |
- |  remove(self, value, /)
- |      Remove first occurrence of value.
- |
- |      Raises ValueError if the value is not present.
- |
- |  reverse(self, /)
- |      Reverse *IN PLACE*.
- |
- |  sort(self, /, *, key=None, reverse=False)
- |      Sort the list in ascending order and return None.
- |
- |      The sort is in-place (i.e. the list itself is modified) and stable (i.e. the
- |      order of two equal elements is maintained).
- |
- |      If a key function is given, apply it once to each list item and sort them,
- |      ascending or descending, according to their function values.
- |
- |      The reverse flag can be set to sort in descending order.
- |
- |  ----------------------------------------------------------------------
- |  Static methods defined here:
- |
- |  __new__(*args, **kwargs) from builtins.type
- |      Create and return a new object.  See help(type) for accurate signature.
- |
- |  ----------------------------------------------------------------------
- |  Data and other attributes defined here:
- |
- |  __hash__ = None -->
+- `positional arguments`: arguments mapped to parameters based solely on their order
+  - example: def function(name, age, skill)
+    - when calling function - function('Jane', 24, 'typing')
+    - so name = Jane, age = 24, skill = typing
+
+- `arbitrary arguments`: used when the amount of arguments that will be passed to the function are unknown; so an asterisk is used before the name of the parameter to declare the parameter arbitrary
+  - example: def function(*attendees)
+    - when calling function - function('Jane', 'Jill', 'John', 'James', 'Jeremy', 'Jack')
+    - although there is one parameter, you can give as many arguments as you want
+
+- `keyword arguments`: allows arguments to be out of order 
+      _Note - you should either use positional or keyword, not a mix of both unless the keyword argument follows the positional argument. I can't think of a case when you would want this since that essentially makes it a positional argument_
+  - example: def function(pet, diet, age)
+    - when calling function - function(pet='cat', diet='carnivorous', age=3)
+    - you set the parameter equal to the argument given thereby defining the parameter using its keyword
+
+- `default arguments`: function arguments can be given default values 
+      _Note - you can not have non-default arguments following default arguments (BAD -> def test(num1 = 2, num2))_
+  - example: def function(name, greeting='Hello!')
+    - when calling function - function(Jim) or function(Jim, 'Howdy!')
+    - give the parameter(s) an argument which will allow omission of that parameter when calling the function
+
+Packing/Unpacking Argument lists
+https://docs.python.org/3.7/tutorial/controlflow.html#unpacking-argument-lists
