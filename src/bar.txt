@@ -1,0 +1,3 @@
+Sentence 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Sentence 2: Accumsan tortor posuere ac ut.
+Sentence 3: Sed ullamcorper morbi tincidunt ornare.
